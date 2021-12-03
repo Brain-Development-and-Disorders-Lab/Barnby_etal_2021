@@ -342,16 +342,16 @@ for (i in 1:length(CCDcormat$r[,1])){
   }
 }
 
-cor1 <- ggcorrplot::ggcorrplot(corr = NTcormat$r, p.mat = NTcormat$P, lab = T, type = 'upper')+
+cor1 <- ggcorrplot::ggcorrplot(corr = NTcormat$r, p.mat = NTcormat$P, lab = T, lab_size = 5, type = 'upper')+
   labs(title = 'Correlation', y = 'NT')+
   theme(legend.position = c(0.75, 0.25),
         plot.title = element_text(size = 18,hjust = 0.5),
         axis.title.y = element_text(size = 18, angle = 90))
-cor2 <- ggcorrplot::ggcorrplot(corr = CCDcormat$r, p.mat = CCDcormat$P, lab = T, type = 'upper')+
+cor2 <- ggcorrplot::ggcorrplot(corr = CCDcormat$r, p.mat = CCDcormat$P, lab = T, lab_size = 5, type = 'upper')+
   theme(legend.position = c(0.75, 0.25),
         axis.title.y = element_text(size = 18, angle = 90))+
   labs(y = 'CCD')
-cor3 <- ggcorrplot::ggcorrplot(corr = diff[[1]], p.mat = diff[[2]], lab = T, type = 'upper')+
+cor3 <- ggcorrplot::ggcorrplot(corr = diff[[1]], p.mat = diff[[2]], lab = T, lab_size = 5, type = 'upper')+
   theme(legend.position = c(0.75, 0.25),
         axis.title.y = element_text(size = 18, angle = 90))+
   labs(y = 'Difference')+
@@ -383,13 +383,13 @@ for (i in 1:length(CCDpcormat$estimate[,1])){
   }
 }
 
-parcor1 <- ggcorrplot::ggcorrplot(corr = NTpcormat$estimate, p.mat = NTpcormat$p.value, lab = T, type = 'upper')+
+parcor1 <- ggcorrplot::ggcorrplot(corr = NTpcormat$estimate, p.mat = NTpcormat$p.value, lab = T, lab_size = 5, type = 'upper')+
   theme(legend.position = c(0.75, 0.25),
         plot.title = element_text(size = 18,hjust = 0.5))+
   labs(title = 'Partial Correlation')
-parcor2 <- ggcorrplot::ggcorrplot(corr = CCDpcormat$estimate, p.mat = CCDpcormat$p.value, lab = T, type = 'upper')+
+parcor2 <- ggcorrplot::ggcorrplot(corr = CCDpcormat$estimate, p.mat = CCDpcormat$p.value, lab = T, lab_size = 5, type = 'upper')+
   theme(legend.position = c(0.75, 0.25))
-parcor3 <- ggcorrplot::ggcorrplot(corr = diffp[[1]], p.mat = diffp[[2]], lab = T, type = 'upper')+
+parcor3 <- ggcorrplot::ggcorrplot(corr = diffp[[1]], p.mat = diffp[[2]], lab = T, lab_size = 5, type = 'upper')+
   theme(legend.position = c(0.75, 0.25))+
   scale_fill_gradient2(low = 'white', mid = 'white', high = 'red', name = 'Z-score', midpoint = 1.5, limits = c(0,4))+
   theme(legend.key = element_rect(fill = "white", colour = "black"))
@@ -531,7 +531,7 @@ nPC  = 3   # no of PCs to retain
 #  Train_permute <- permuteDF[ trainIndex,]
 #  Valid_permute <- permuteDF[-trainIndex,]
 #  testPCA_permute<- rbind(Valid_permute,
-#                          pcadfCCD)
+#                          regressed_data_CCD)
 #
 #  # Run the PCA
 #  res.pca_permute  <- prcomp(Train_permute,
@@ -548,7 +548,7 @@ nPC  = 3   # no of PCs to retain
 #  LOOCVmat <- predpermute %>%
 #    as.data.frame() %>%
 #    mutate(Group = c(rep('NT', length(Valid_permute[,1])),
-#                     rep('CCD', length(pcadfCCD[,1]))),
+#                     rep('CCD', length(regressed_data_CCD[,1]))),
 #           Group = factor(Group)
 #    )
 #
