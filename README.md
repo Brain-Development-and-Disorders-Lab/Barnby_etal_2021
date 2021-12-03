@@ -11,7 +11,7 @@ Please contact Joe Barnby for all code related issues and problems.
 
 ## Study design
 
-<img src="Figure1.png" alt="Study design" style="width:200px;"/>
+<img src="Figure1.png" alt="Study design" style="width:600px;"/>
 
 ## Data
 
