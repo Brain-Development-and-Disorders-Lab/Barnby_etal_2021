@@ -37,12 +37,12 @@ first_wave_NTdata <- read.csv('data/first_wave_data.csv') # for test-retest
 # due to the nature of random seeds sampling. To directly reproduce the figures and data
 # from our paper, just load the below dfs and go wild!
 
-trainPCA          <- read.csv('data/TrainingData.csv') # data for reproducing Figure 3D & 3E
-testPCA           <- read.csv('data/TestData.csv') # data for reproducing Figure 3D & 3E
+trainPCA          <- read.csv('data/TrainingData.csv') %>% dplyr::select(-X)# data for reproducing Figure 3D & 3E
+testPCA           <- read.csv('data/TestData.csv') %>% dplyr::select(-X) # data for reproducing Figure 3D & 3E
 
 #For the machine learning model:
-regressed_data_NT <- read.csv('data/regressed_training_data_NT.csv')
-regressed_data_CCD<- read.csv('data/regressed_test_data_CCD.csv')
+regressed_data_NT <- read.csv('data/regressed_training_data_NT.csv') %>% dplyr::select(-X)
+regressed_data_CCD<- read.csv('data/regressed_test_data_CCD.csv') %>% dplyr::select(-X)
 averagedVariance  <- read.csv('data/averagedVariance.csv') %>% dplyr::select(-X)
 LOOCVlist         <- read.csv('data/LOOCVlist.csv') %>% dplyr::select(-X)
 confusPermute     <- read.csv('data/confusPermute.csv') %>% dplyr::select(-X)
@@ -487,11 +487,6 @@ res.pca  <- prcomp(trainPCA,
                   center = T)
 
 summary(res.pca)
-
-fvize <- fviz_eig(res.pca)+
-  theme(axis.text = element_text(size = 18),
-        axis.title = element_text(size = 18),
-        plot.title = element_blank())
 
 # Use the model to predict out of sample participants
 rownames(testPCA) <- 1:length(rownames(testPCA))
