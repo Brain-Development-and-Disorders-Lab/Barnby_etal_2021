@@ -11,7 +11,7 @@ Please contact Joe Barnby for all code related issues and problems.
 
 ## Study design
 
-![alt text](Figure1.png "Study Design")
+<img src="Figure1.png" alt="Study design" style="width:200px;"/>
 
 ## Data
 
