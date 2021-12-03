@@ -7,7 +7,8 @@
 <br />
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
-Please contact Joe Barnby for all code related issues and problems.
+<br>
+Please contact Joe Barnby for all code related issues and problems. There is a file named 'ISSUE_TEMPLATE' in the repo that can be used to more specifically inform us of any issues you encounter. 
 
 ## Study design
 
