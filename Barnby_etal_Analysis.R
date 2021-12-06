@@ -8,6 +8,8 @@
 # regressed out. Please contact the authors to retrieve the full set of
 # data that includes Age and Sex.
 
+rm(list = ls())
+
 # Libraries ---------------------------------------------------------------
 
 library(tidyverse)
@@ -52,8 +54,8 @@ loading_list_absc <- read.csv('data/loading_list_absc.csv') %>% dplyr::select(-X
 
 #Data taken from https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0250264
 
-TrustStudy1 <- read_csv('pone.0250264.s003.csv')
-TrustStudy2 <- read_csv('pone.0250264.s003.csv')
+TrustStudy1 <- read_csv('data/pone.0250264.s003.csv')
+TrustStudy2 <- read_csv('data/pone.0250264.s003.csv')
 TrustFon    <- rbind(TrustStudy1[,1:4], TrustStudy2[,1:4])
 
 TrustFon    <- TrustFon %>%
@@ -66,9 +68,9 @@ t.test(data %>% filter(Group == 'NT') %>% dplyr::select(ICAR), mu = 5) # Condon 
 t.test(data %>% filter(Group == 'NT') %>% dplyr::select(Persec), mu = 11) # Freeman et al., 2021
 t.test(data %>% filter(Group == 'NT') %>% dplyr::select(Persuade), mu = 15.77) # Teunisse et al., 2020
 t.test(data %>% filter(Group == 'NT') %>% dplyr::select(Insense), mu = 17.84) # Teunisse et al., 2020
-t.test(data %>% filter(Group == 'NT') %>% dplyr::select(TrustGSI), TrustFon$TrustGSI)
-t.test(data %>% filter(Group == 'NT') %>% dplyr::select(MistrustGSI), TrustFon$MistrustGSI)
-t.test(data %>% filter(Group == 'NT') %>% dplyr::select(CredGSI), TrustFon$CredGSI)
+t.test(data %>% filter(Group == 'NT') %>% dplyr::select(Trust)/5, TrustFon$TrustGSI)
+t.test(data %>% filter(Group == 'NT') %>% dplyr::select(Mistrust)/5, TrustFon$MistrustGSI)
+t.test(data %>% filter(Group == 'NT') %>% dplyr::select(Credulity)/5, TrustFon$CredGSI)
 t.test(data %>% filter(Group == 'NT') %>% dplyr::select(AutismS), mu = 56.74) # Hoekstra et al., 2013
 t.test(data %>% filter(Group == 'NT') %>% dplyr::select(AutismS), mu = 89.63) # Hoekstra et al., 2013
 t.test(data %>% filter(Group == 'NT') %>% dplyr::select(SocIntell), mu = 102.62) # Tromso et al., 2011
@@ -78,9 +80,9 @@ t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(ICAR), mu = 5)
 t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(Persec), mu = 11)
 t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(Persuade), mu = 15.77)
 t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(Insense), mu = 17.84)
-t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(TrustGSI), TrustFon$TrustGSI)
-t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(MistrustGSI), TrustFon$MistrustGSI)
-t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(CredGSI), TrustFon$CredGSI)
+t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(Trust)/5, TrustFon$TrustGSI)
+t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(Mistrust)/5, TrustFon$MistrustGSI)
+t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(Cred)/5, TrustFon$CredGSI)
 t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(AutismS), mu = 56.74)
 t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(AutismS), mu = 89.63)
 t.test(data %>% filter(Group == 'CCD') %>% dplyr::select(SocIntell), mu = 102.62)
